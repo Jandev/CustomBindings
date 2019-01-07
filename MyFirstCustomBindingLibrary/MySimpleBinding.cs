@@ -9,6 +9,7 @@ namespace MyFirstCustomBindingLibrary
     /// Extension for the binding <see cref="MySimpleBindingAttribute"/>.
     /// Will enable to read files from local disk.
     /// </summary>
+    [Extension("MySimpleBinding")]
     public class MySimpleBinding : IExtensionConfigProvider
     {
         public void Initialize(ExtensionConfigContext context)
