@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomBindingFunction", "CustomBindingFunction\CustomBindingFunction.csproj", "{290548E5-FA62-48B3-8087-F0BE99A77CC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomBindingFunction", "CustomBindingFunction\CustomBindingFunction.csproj", "{290548E5-FA62-48B3-8087-F0BE99A77CC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstCustomBindingLibrary", "MyFirstCustomBindingLibrary\MyFirstCustomBindingLibrary.csproj", "{B69AA4DA-FD97-4676-A3FF-4BA3806B7800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstCustomBindingLibrary", "MyFirstCustomBindingLibrary\MyFirstCustomBindingLibrary.csproj", "{B69AA4DA-FD97-4676-A3FF-4BA3806B7800}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{06A6D7E2-7C13-4E9E-8923-0B6416919059}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
