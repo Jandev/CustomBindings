@@ -7,5 +7,10 @@ namespace SqlServerBinding
     [Binding]
     public class SqlServerAttribute : Attribute
     {
+        [ConnectionString(Default = "SqlServerConnectionString")]
+        public string ConnectionString { get; set; }
+
+        [AutoResolve]
+        public string Query { get; set; }
     }
 }

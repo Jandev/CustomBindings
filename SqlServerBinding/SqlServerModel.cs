@@ -2,5 +2,6 @@
 {
     public class SqlServerModel
     {
+        public dynamic Record { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace CustomBindingFunction
     public static class CustomBindingFunction
     {
         [FunctionName("CustomBindingFunction")]
-        public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "{name}")]
+        public static IActionResult RunCustomBindingFunction(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "custombinding\\{name}")]
             HttpRequest req,
             string name,
             [MySimpleBinding(Location = "%filepath%\\{name}")]

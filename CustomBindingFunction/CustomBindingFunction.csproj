@@ -10,6 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyFirstCustomBindingLibrary\MyFirstCustomBindingLibrary.csproj" />
+    <ProjectReference Include="..\SqlServerBinding\SqlServerBinding.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
