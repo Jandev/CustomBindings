@@ -8,9 +8,19 @@ namespace CustomBindingFunction
 {
     public static class SqlServerFunction
     {
-        [FunctionName("SqlServerFunction")]
-        public static IActionResult RunSqlServerFunction(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "sqlserver")]
+        [FunctionName(nameof(GetSingleRecord))]
+        public static IActionResult GetSingleRecord(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = nameof(GetSingleRecord))]
+            HttpRequest req,
+            [SqlServer(Query = "SELECT TOP 1 Id, EventName, EventDescription FROM Cfps")]
+            SqlServerModel model)
+        {
+            return (ActionResult)new OkObjectResult(model.Record.Id);
+        }
+
+        [FunctionName(nameof(GetCollectionFromSqlServer))]
+        public static IActionResult GetCollectionFromSqlServer(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = nameof(GetCollectionFromSqlServer))]
             HttpRequest req,
             [SqlServer(Query = "SELECT TOP 1 Id, EventName, EventDescription FROM Cfps")]
             SqlServerModel model)
