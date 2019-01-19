@@ -17,6 +17,7 @@ namespace SqlServerBinding
             var rule = context.AddBindingRule<SqlServerAttribute>();
             rule.BindToInput<SqlServerModel>(BuildFromAttribute);
             rule.BindToInput<IEnumerable<SqlServerModel>>(BuildCollectionFromAttribute);
+            rule.BindToCollector<SqlServerModel>(attribute => new SqlAsyncCollector(attribute));
         }
 
         private async Task<IEnumerable<SqlServerModel>> BuildCollectionFromAttribute(

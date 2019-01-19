@@ -12,5 +12,8 @@ namespace SqlServerBinding
 
         [AutoResolve]
         public string Query { get; set; }
+
+        [AutoResolve]
+        public string Command { get; set; }
     }
 }
