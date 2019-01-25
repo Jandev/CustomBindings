@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerBinding", "SqlServerBinding\SqlServerBinding.csproj", "{B470A7F2-FCFD-41D6-8067-15A603345801}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServerBinding", "SqlServerBinding\SqlServerBinding.csproj", "{B470A7F2-FCFD-41D6-8067-15A603345801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
