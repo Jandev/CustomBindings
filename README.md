@@ -17,6 +17,11 @@ Be sure to add a `local.settings.json` file before you run the application. The 
 	  "Values": {
 		"AzureWebJobsStorage": "UseDevelopmentStorage=true",
 		"AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-		"filepath": "D:\\Temp\\"
+		"FUNCTIONS_WORKER_RUNTIME": "dotnet",
+		"filepath": "D:\\Temp\\",
+		"ServiceBusConnection": "Endpoint=sb://[myServiceBus].servicebus.windows.net/;SharedAccessKeyName=[NameOfAccessKey];SharedAccessKey=[AccessKey]"
+	  },
+	  "ConnectionStrings": {
+		"SqlServerConnectionString": "Server=tcp:[server].database.windows.net,1433;Initial Catalog=[database];Persist Security Info=False;User ID=[username];Password=[password];MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 	  }
 	}
