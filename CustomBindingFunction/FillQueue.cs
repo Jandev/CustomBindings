@@ -12,8 +12,9 @@ namespace CustomBindingFunction
     {
         [FunctionName("FillQueue")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get")] 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "FillQueue/{name}")] 
             HttpRequest req,
+            string name,
             [ServiceBus("wrong-implementation", Connection = "ServiceBusConnection", EntityType = EntityType.Queue)] 
             ICollector<Guid> wrongImplementationCollection,
             [ServiceBus("correct-implementation-netframework", Connection = "ServiceBusConnection", EntityType = EntityType.Queue)] 
@@ -22,17 +23,33 @@ namespace CustomBindingFunction
             ICollector<Guid> correctNetCoreImplementationCollection,
             ILogger log)
         {
-            log.LogInformation($"Executing {nameof(FillQueue)}");
+            log.LogInformation($"Executing {nameof(FillQueue)} for queue {name}");
 
-            for (int i = 0; i < 1000; i++)
+            const int maximum = 1000;
+            switch (name.ToLowerInvariant())
             {
-                wrongImplementationCollection.Add(Guid.NewGuid());
-                correctNetFrameworkkImplementationCollection.Add(Guid.NewGuid());
-                correctNetCoreImplementationCollection.Add(Guid.NewGuid());
+                case "wrong-implementation":
+                    for (int i = 0; i < maximum; i++)
+                    {
+                        wrongImplementationCollection.Add(Guid.NewGuid());
+                    }
+                    break;
+                case "correct-implementation-netframework":
+                    for (int i = 0; i < maximum; i++)
+                    {
+                        correctNetFrameworkkImplementationCollection.Add(Guid.NewGuid());
+                    }
+                    break;
+                case "correct-implementation-netcore":
+                    for (int i = 0; i < maximum; i++)
+                    {
+                        correctNetCoreImplementationCollection.Add(Guid.NewGuid());
+                    }
+                    break;
             }
 
-            log.LogInformation($"Executed {nameof(FillQueue)}");
-            return new OkObjectResult($"The queues are filled up.");
+            log.LogInformation($"Executed {nameof(FillQueue)} for queue {name}");
+            return new OkObjectResult($"The queue {name} is filled up.");
         }
     }
 }
