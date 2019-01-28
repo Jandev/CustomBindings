@@ -17,8 +17,8 @@ namespace CustomBindingFunction
         {
             log.LogInformation($"Executing ServiceBus queue trigger. Processing message: {identifier}");
 
-            HttpClient.BaseAddress = new Uri(Environment.GetEnvironmentVariable("BaseAddress", EnvironmentVariableTarget.Process));
-            await HttpClient.GetAsync($"api/Echo/{identifier}");
+            var baseAddress = Environment.GetEnvironmentVariable("BaseAddress", EnvironmentVariableTarget.Process);
+            await HttpClient.GetAsync($"{baseAddress}api/Echo/{identifier}");
 
             log.LogInformation($"Executed ServiceBus queue trigger. Processing message: {identifier}");
         }
