@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServerBinding", "SqlServerBinding\SqlServerBinding.csproj", "{B470A7F2-FCFD-41D6-8067-15A603345801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthChecking", "HealthChecking\HealthChecking.csproj", "{1D7A9FD2-B776-4BFC-BA76-09F49BEF670D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecking", "HealthChecking\HealthChecking.csproj", "{1D7A9FD2-B776-4BFC-BA76-09F49BEF670D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpBinding", "HttpBinding\HttpBinding.csproj", "{7A8C5880-D4A0-4574-B7B7-7D73EA9E703D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1D7A9FD2-B776-4BFC-BA76-09F49BEF670D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D7A9FD2-B776-4BFC-BA76-09F49BEF670D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D7A9FD2-B776-4BFC-BA76-09F49BEF670D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8C5880-D4A0-4574-B7B7-7D73EA9E703D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8C5880-D4A0-4574-B7B7-7D73EA9E703D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8C5880-D4A0-4574-B7B7-7D73EA9E703D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8C5880-D4A0-4574-B7B7-7D73EA9E703D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
