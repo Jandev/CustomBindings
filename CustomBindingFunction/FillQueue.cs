@@ -25,7 +25,7 @@ namespace CustomBindingFunction
         {
             log.LogInformation($"Executing {nameof(FillQueue)} for queue {name}");
 
-            const int maximum = 100000;
+            const int maximum = 5000;
             switch (name.ToLowerInvariant())
             {
                 case "wrong-implementation":
