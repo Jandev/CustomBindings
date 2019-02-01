@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
+﻿using Microsoft.Azure.WebJobs;
 
 namespace MyWebJob
 {
@@ -20,6 +15,7 @@ namespace MyWebJob
             {
                 config.UseDevelopmentSettings();
             }
+            config.UseServiceBus();
 
             var host = new JobHost(config);
             // The following code ensures that the WebJob will be running continuously
