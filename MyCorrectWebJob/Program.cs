@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.WebJobs;
 
-namespace MyWebJob
+namespace MyCorrectWebJob
 {
     class Program
     {

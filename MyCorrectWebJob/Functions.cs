@@ -5,19 +5,18 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
-namespace MyWebJob
+namespace MyCorrectWebJob
 {
     public class Functions
     {
+        private static readonly HttpClient HttpClient = new HttpClient();
         public static async Task ProcessQueueMessage(
-            [ServiceBusTrigger("wrong-implementation", Connection = "ServiceBusConnection")]
-            Guid identifier, 
+            [ServiceBusTrigger("correct-implementation-netframework", Connection = "ServiceBusConnection")]
+            Guid identifier,
             TextWriter log)
         {
-            var httpClient = new HttpClient();
             var baseAddress = ConfigurationManager.AppSettings["BaseAddress"];
-            httpClient.BaseAddress = new Uri(baseAddress);
-            var response = await httpClient.GetAsync($"api/Echo/{identifier}");
+            var response = await HttpClient.GetAsync($"{baseAddress}api/Echo/{identifier}");
             log.WriteLine(response.ToString());
         }
     }
