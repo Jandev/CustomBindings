@@ -51,7 +51,7 @@ namespace CustomBindingFunction
                 case "correct-implementation-netstandard":
                     for (int i = 0; i < maximum; i++)
                     {
-                        correctNetCoreImplementationCollection.Add(Guid.NewGuid());
+                        correctNetStandardImplementationCollection.Add(Guid.NewGuid());
                     }
                     break;
             }
