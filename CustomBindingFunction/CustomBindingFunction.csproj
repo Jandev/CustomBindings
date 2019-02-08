@@ -13,6 +13,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HttpBinding\HttpBinding.csproj" />
     <ProjectReference Include="..\MyFirstCustomBindingLibrary\MyFirstCustomBindingLibrary.csproj" />
     <ProjectReference Include="..\SqlServerBinding\SqlServerBinding.csproj" />
   </ItemGroup>
