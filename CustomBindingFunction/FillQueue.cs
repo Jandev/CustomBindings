@@ -21,6 +21,8 @@ namespace CustomBindingFunction
             ICollector<Guid> correctNetFrameworkkImplementationCollection,
             [ServiceBus("correct-implementation-netcore", Connection = "ServiceBusConnection", EntityType = EntityType.Queue)] 
             ICollector<Guid> correctNetCoreImplementationCollection,
+            [ServiceBus("correct-implementation-netstandard", Connection = "ServiceBusConnection", EntityType = EntityType.Queue)]
+            ICollector<Guid> correctNetStandardImplementationCollection,
             ILogger log)
         {
             log.LogInformation($"Executing {nameof(FillQueue)} for queue {name}");
@@ -41,6 +43,12 @@ namespace CustomBindingFunction
                     }
                     break;
                 case "correct-implementation-netcore":
+                    for (int i = 0; i < maximum; i++)
+                    {
+                        correctNetCoreImplementationCollection.Add(Guid.NewGuid());
+                    }
+                    break;
+                case "correct-implementation-netstandard":
                     for (int i = 0; i < maximum; i++)
                     {
                         correctNetCoreImplementationCollection.Add(Guid.NewGuid());
