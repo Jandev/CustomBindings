@@ -2,8 +2,10 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HttpBinding;
+using HttpBinding.HttpCommand;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace CustomBindingFunction
 {
@@ -29,12 +31,15 @@ namespace CustomBindingFunction
         public static void CorrectImplementationWithBinding(
             [ServiceBusTrigger("correct-implementation-netstandard", Connection = "ServiceBusConnection")]
             Guid identifier,
-            [Http(Url = "%BaseAddress%api/Echo/{identifier}")] HttpModel httpModel,
+            [Http(Url = "%BaseAddress%api/Echo/{identifier}")] 
+            HttpModel httpModel,
+            [HttpCommand(CommandUrl = "%BaseAddress%api/EchoCommand", MediaType = "application/json", HttpMethod = "POST")] 
+            IAsyncCollector<HttpCommand> httpPostCommandCollector,
             ILogger log)
         {
             log.LogInformation($"Executing ServiceBus queue trigger. Processing message: {identifier}");
 
-            log.LogInformation($"Retrieved status: {httpModel.ResponseCode} Content: {httpModel.Response}");
+            httpPostCommandCollector.AddAsync(new HttpCommand(JsonConvert.SerializeObject(identifier)));
 
             log.LogInformation($"Executed ServiceBus queue trigger. Processing message: {identifier}");
         }
