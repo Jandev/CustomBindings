@@ -32,7 +32,7 @@ namespace HttpBinding.HttpCommand
 
         public async Task FlushAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            switch (this.attribute.HttpMethod.Method)
+            switch (this.attribute.HttpMethod)
             {
                 case "POST":
                     await SendPost(cancellationToken);
@@ -41,7 +41,7 @@ namespace HttpBinding.HttpCommand
                     await SendPut(cancellationToken);
                     break;
                 default:
-                    throw new NotImplementedException("The selected HttpMethod is not implemented in this binding.");
+                    throw new NotImplementedException("The selected HttpMethod is not implemented in this binding. Supported methods are `POST`, `PUT`.");
 
             }
         }

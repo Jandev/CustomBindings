@@ -12,7 +12,9 @@ namespace HttpBinding.HttpCommand
 
         public string MediaType { get; set; }
 
-        public HttpMethod HttpMethod { get; set; }
+        public string HttpMethod { get; set; }
+
+        [AutoResolve]
         public string CommandUrl { get; set; }
     }
 }
