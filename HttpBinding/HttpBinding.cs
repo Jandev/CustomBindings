@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using HttpBinding.HttpCommand;
 using Microsoft.Azure.WebJobs.Description;
 using Microsoft.Azure.WebJobs.Host.Config;
 
@@ -9,24 +10,26 @@ namespace HttpBinding
     [Extension(nameof(HttpBinding))]
     public class HttpBinding : IExtensionConfigProvider
     {
-        private static HttpClient httpClient;
+        internal static HttpClient HttpClient;
 
         public void Initialize(ExtensionConfigContext context)
         {
-            var rule = context.AddBindingRule<HttpAttribute>();
-            rule.BindToInput<HttpModel>(BuildFromAttribute);
+            var ruleQuery = context.AddBindingRule<HttpAttribute>();
+            var ruleCommand = context.AddBindingRule<HttpCommandAttribute>();
+            ruleQuery.BindToInput<HttpModel>(BuildFromAttribute);
+            ruleCommand.BindToCollector<HttpCommand.HttpCommand>(attribute => new HttpCommandAsyncCollector(attribute));
         }
 
         private async Task<HttpModel> BuildFromAttribute(
             HttpAttribute attribute,
             CancellationToken cancellationToken)
         {
-            if (httpClient == null)
+            if (HttpBinding.HttpClient == null)
             {
-                httpClient = attribute.HttpClient ?? new HttpClient();
+                HttpBinding.HttpClient = attribute.HttpClient ?? new HttpClient();
             }
 
-            var response = await httpClient.GetAsync(attribute.Url, cancellationToken);
+            var response = await HttpClient.GetAsync(attribute.Url, cancellationToken);
 
             return new HttpModel
             {
