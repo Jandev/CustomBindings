@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using HttpBinding.HttpCommand;
 using Microsoft.Azure.WebJobs.Description;
 using Microsoft.Azure.WebJobs.Host.Config;
 
@@ -16,7 +17,7 @@ namespace HttpBinding
             var ruleQuery = context.AddBindingRule<HttpAttribute>();
             var ruleCommand = context.AddBindingRule<HttpCommandAttribute>();
             ruleQuery.BindToInput<HttpModel>(BuildFromAttribute);
-            ruleCommand.BindToCollector<HttpCommand>(attribute => new HttpCommandAsyncCollector(attribute));
+            ruleCommand.BindToCollector<HttpCommand.HttpCommand>(attribute => new HttpCommandAsyncCollector(attribute));
         }
 
         private async Task<HttpModel> BuildFromAttribute(
