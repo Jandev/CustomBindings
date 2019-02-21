@@ -3,8 +3,8 @@ using Microsoft.Azure.WebJobs.Description;
 
 namespace MyFirstCustomBindingLibrary
 {
-    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
     [Binding]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
     public class MySimpleBindingAttribute : Attribute
     {
         /// <summary>
